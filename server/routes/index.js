@@ -1,10 +1,11 @@
 import express from 'express';
 
-var router = express.Router();
+const indexRouter = express.Router();
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'World' });
+indexRouter.get('/', function(req, res, next) {
+  res.send({
+    drew: "is the best"
+  });
 });
 
-export default router;
+export { indexRouter };
