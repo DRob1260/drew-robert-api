@@ -7,35 +7,37 @@
   },
   "license": "MIT",
   "dependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.8.4",
+    "@babel/preset-env": "^7.8.4",
+    "@types/debug": "^4.1.5",
+    "@types/express": "^4.17.7",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
-    "express": "~4.16.1",
+    "express": "^4.16.4",
     "morgan": "~1.9.1",
     "nodemon": "^2.0.2",
     "npm-run-all": "^4.1.5",
-    "rimraf": "^3.0.1",
-    "@babel/cli": "^7.8.4",
-    "@babel/core": "^7.8.4",
-    "@babel/preset-env": "^7.8.4"
+    "rimraf": "^3.0.1"
   },
   "devDependencies": {
-    "jest": "^25.1.0"
+    "@babel/plugin-proposal-class-properties": "^7.10.4",
+    "@babel/plugin-proposal-object-rest-spread": "^7.11.0",
+    "@babel/preset-typescript": "^7.10.4",
+    "jest": "^25.1.0",
+    "typescript": "^4.0.2"
   },
   "nodemonConfig": {
     "exec": "npm run dev",
+    "ext": "ts",
     "watch": [
       "server/*",
       "public/*"
     ],
     "ignore": [
-      "**/__tests__/**",
-      "*.test.js",
-      "*.spec.js"
-    ]
-  },
-  "babel": {
-    "presets": [
-      "@babel/preset-env"
+      "*.test.ts",
+      "dist",
+      "node_modules"
     ]
   },
   "jest": {
@@ -47,7 +49,7 @@
     "server": "node ./dist-server/bin/www",
     "dev": "NODE_ENV=development npm-run-all build server",
     "prod": "NODE_ENV=production npm-run-all build server",
-    "transpile": "babel ./server --out-dir dist-server",
+    "transpile": "babel ./server --out-dir dist-server --extensions '.ts' --source-maps inline",
     "clean": "rimraf dist-server",
     "watch:dev": "nodemon",
     "test": "jest"
