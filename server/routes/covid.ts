@@ -40,7 +40,7 @@ covidRouter.get(
     const state = req.params.state.toLowerCase();
     const county = req.params.county.toLowerCase();
 
-    if (country === "usa" && state === "il" && county === "mclean") {
+    if (country === "usa" && state === "il") {
       getIllinoisCovidData()
         .then((data) => {
           const historicalRecords = processIllinoisCountyCovidData(
