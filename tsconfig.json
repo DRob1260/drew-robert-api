@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "types": ["nodes", "jest"],
     "module": "commonjs",
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
@@ -10,12 +11,8 @@
     "outDir": "dist-server",
     "baseUrl": ".",
     "paths": {
-      "*": [
-        "node_modules/*"
-      ]
+      "*": ["node_modules/*"]
     }
   },
-  "include": [
-    "server/**/*"
-  ]
+  "include": ["server/**/*"]
 }
