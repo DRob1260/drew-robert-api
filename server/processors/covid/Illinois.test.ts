@@ -22,6 +22,7 @@ const expectedIllinoisCovidData: RegionData = {
     name: "Illinois",
     lat: 40.6331,
     long: -89.3985,
+    subRegions: ["Adams", "Alexander"],
   },
   historicalRecords: [
     {
@@ -56,6 +57,7 @@ const expectedIllinoisCovidCountyData: RegionData = {
     name: "Adams",
     lat: 40.0578,
     long: -91.1353,
+    subRegions: [],
   },
   historicalRecords: [
     {
