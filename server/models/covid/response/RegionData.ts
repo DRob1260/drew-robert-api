@@ -5,6 +5,7 @@ export interface RegionData {
     name: string;
     lat: number;
     long: number;
+    subRegions: Array<string>;
   };
   historicalRecords: Array<HistoricalRecord>;
 }

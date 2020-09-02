@@ -17,11 +17,20 @@ const processIllinoisCovidData = (
     });
   });
 
+  const subRegions = illinoisCovidData.historical_county.values[0].values
+    .map((county) => {
+      return county.County;
+    })
+    .filter((subRegion) => {
+      return subRegion !== "Illinois";
+    });
+
   return {
     region: {
       name: "Illinois",
       lat: 40.6331,
       long: -89.3985,
+      subRegions: subRegions,
     },
     historicalRecords: historicalRecords,
   };
@@ -60,6 +69,7 @@ const processIllinoisCountyCovidData = (
       name: name,
       lat: lat,
       long: long,
+      subRegions: [],
     },
     historicalRecords: historicalRecords,
   };
