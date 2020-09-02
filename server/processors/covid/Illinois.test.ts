@@ -3,66 +3,78 @@ import {
   processIllinoisCountyCovidData,
 } from "./illinois";
 import { illinoisCovidData } from "../../../test/data/covid/illinois/illinois";
-import { HistoricalRecord } from "../../models/covid/response/HistoricalRecord";
+import { RegionData } from "../../models/covid/response/RegionData";
 
-it("extracts illinois historical data", () => {
+it("processes illinois covid data", () => {
   expect(processIllinoisCovidData(illinoisCovidData)).toEqual(
-    expectedIllinoisHistoricalRecords
+    expectedIllinoisCovidData
   );
 });
 
-it("extracts illinois county historical data", () => {
+it("processes illinois county covid data", () => {
   expect(processIllinoisCountyCovidData(illinoisCovidData, "adams")).toEqual(
-    expectedIllinoisCountyHistoricalRecords
+    expectedIllinoisCovidCountyData
   );
 });
 
-const expectedIllinoisHistoricalRecords: HistoricalRecord[] = [
-  {
-    testDate: "8/23/2020",
-    region: "Illinois",
-    totals: {
-      cases: 220178,
-      tested: 3704036,
-      deaths: 7880,
-    },
-    lat: 39.839888,
-    long: -89.510168,
+const expectedIllinoisCovidData: RegionData = {
+  region: {
+    name: "Illinois",
+    lat: 40.6331,
+    long: -89.3985,
+    subRegions: ["Adams", "Alexander"],
   },
-  {
-    testDate: "8/16/2020",
-    region: "Illinois",
-    totals: {
-      cases: 206081,
-      tested: 3366851,
-      deaths: 7744,
+  historicalRecords: [
+    {
+      testDate: "6/07/2020",
+      totals: {
+        cases: 127757,
+        tested: 1042774,
+        deaths: 5901,
+      },
     },
-    lat: 39.839888,
-    long: -89.510168,
-  },
-];
+    {
+      testDate: "6/14/2020",
+      totals: {
+        cases: 132543,
+        tested: 1190985,
+        deaths: 6307,
+      },
+    },
+    {
+      testDate: "6/21/2020",
+      totals: {
+        cases: 136762,
+        deaths: 6645,
+        tested: 1360784,
+      },
+    },
+  ],
+};
 
-const expectedIllinoisCountyHistoricalRecords: HistoricalRecord[] = [
-  {
-    testDate: "8/23/2020",
-    region: "Adams",
-    totals: {
-      cases: 713,
-      tested: 23343,
-      deaths: 7,
-    },
+const expectedIllinoisCovidCountyData: RegionData = {
+  region: {
+    name: "Adams",
     lat: 40.0578,
     long: -91.1353,
+    subRegions: [],
   },
-  {
-    testDate: "8/16/2020",
-    region: "Adams",
-    totals: {
-      cases: 643,
-      tested: 21639,
-      deaths: 7,
+  historicalRecords: [
+    {
+      testDate: "8/23/2020",
+      totals: {
+        cases: 713,
+        tested: 23343,
+        deaths: 7,
+      },
     },
-    lat: 40.0578,
-    long: -91.1353,
-  },
-];
+    {
+      testDate: "8/16/2020",
+      totals: {
+        cases: 643,
+        tested: 21639,
+        deaths: 7,
+      },
+    },
+  ],
+};
