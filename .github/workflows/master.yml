@@ -30,7 +30,7 @@ jobs:
           name: Prepare
           id: prep
           run: |
-            echo ::set-output name=tags::drew-robert-api:latest,drew-robert-api:$(date +%m-%d-%y-%H-%M)
+            echo ::set-output name=tags::drob1260/drew-robert-api:latest,drob1260/drew-robert-api:$(date +%m-%d-%y-%H-%M)
       -
         name: Set up QEMU
         uses: docker/setup-qemu-action@v1
