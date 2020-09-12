@@ -3,7 +3,7 @@ import {
   processIllinoisCountyCovidData,
 } from "./illinois";
 import { illinoisCovidData } from "../../../test/data/covid/illinois/illinois";
-import { RegionData } from "../../models/covid/response/RegionData";
+import { RegionData } from "../../models/DrewRobertApi/response/RegionData";
 
 it("processes illinois covid data", () => {
   expect(processIllinoisCovidData(illinoisCovidData)).toEqual(

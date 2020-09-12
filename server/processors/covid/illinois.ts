@@ -1,6 +1,6 @@
-import { IllinoisCovidData } from "../../models/covid/IllinoisCovidData";
-import { HistoricalRecord } from "../../models/covid/response/HistoricalRecord";
-import { RegionData } from "../../models/covid/response/RegionData";
+import { IllinoisCovidData } from "../../models/covid/IllinoisDepartmentOfHealth/IllinoisCovidData";
+import { HistoricalRecord } from "../../models/DrewRobertApi/response/HistoricalRecord";
+import { RegionData } from "../../models/DrewRobertApi/response/RegionData";
 
 const processIllinoisCovidData = (
   illinoisCovidData: IllinoisCovidData

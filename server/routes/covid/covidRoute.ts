@@ -1,19 +1,19 @@
 import express, { Request, Response } from "express";
-import { getIllinoisCovidData } from "../delegators/covid/illinois";
+import { getIllinoisCovidData } from "../../delegators/covid/illinois";
 import {
   processIllinoisCountyCovidData,
   processIllinoisCovidData,
-} from "../processors/covid/illinois";
+} from "../../processors/covid/illinois";
 
 const covidRouter = express.Router();
 
 covidRouter.get(
-  "/country/:country/state/:state",
+  "/country/:country/territory/:territory",
   (req: Request, res: Response) => {
     const country = req.params.country.toLowerCase();
     const state = req.params.state.toLowerCase();
 
-    if (country === "usa" && state === "il") {
+    if (country === "usa" && state === "illinois") {
       getIllinoisCovidData()
         .then((data) => {
           const historicalRecord = processIllinoisCovidData(data);
