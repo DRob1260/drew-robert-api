@@ -20,8 +20,12 @@ jobs:
         run: npm run test
 
   deploy-image: 
+    needs: test
     runs-on: ubuntu-latest
     steps:
+      - 
+        name: Checkout Repo
+        uses: actions/checkout@master
       - 
           name: Prepare
           id: prep
