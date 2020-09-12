@@ -1,4 +1,4 @@
-export const countries = [
+export const countryResolver = [
   {
     key: "unitedstates",
     name: "United States of America",

@@ -3,7 +3,7 @@ import cors from "cors";
 import cookieParser from "cookie-parser";
 import logger from "morgan";
 import { indexRouter } from "./routes";
-import { covidRouter } from "./routes/covid/covidRoute";
+import { covidRouter } from "./routes/covid/covidRouter";
 
 const app = express();
 
