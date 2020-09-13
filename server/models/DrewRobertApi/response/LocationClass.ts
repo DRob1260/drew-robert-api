@@ -10,8 +10,10 @@ export class LocationClass {
   constructor() {
     this.key = "";
     this.name = "";
-    this.source.name = "";
-    this.source.apiUrl = "";
-    this.source.infoUrl = "";
+    this.source = {
+      name: "",
+      apiUrl: "",
+      infoUrl: "",
+    };
   }
 }

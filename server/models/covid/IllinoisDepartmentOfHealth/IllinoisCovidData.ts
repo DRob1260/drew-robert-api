@@ -33,7 +33,15 @@ export interface Demographics {
     count: number;
     tested: number;
     deaths: number;
-    demographics: Array<Record>;
+    demographics: {
+      race: Array<{
+        description: string;
+        count: number;
+        tested: number;
+        deaths: number;
+        color: string;
+      }>;
+    };
   }>;
 }
 
