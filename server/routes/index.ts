@@ -9,6 +9,6 @@ indexRouter.get("/", function (req, res) {
   });
 });
 
-indexRouter.use("/covid", indexRouter);
+indexRouter.use("/covid", covidRouter);
 
 export { indexRouter };
