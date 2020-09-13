@@ -15,30 +15,37 @@ const regionRouter = express.Router({ mergeParams: true });
 regionRouter.get("/", (req: Request, res: Response) => {
   const countryParam = req.params.country;
   const territoryParam = req.params.territory;
-
-  const country = findCountry(countryParam);
-  const territory = findTerritory(countryParam, territoryParam);
-  if (country && territory) {
-    axios
-      .get(territory.source.apiUrl)
-      .then((response) => {
-        const historicalRecords = territory.processor(response.data, territory);
-        const regions = historicalRecords.subLocations;
-        res.status(200);
-        res.send({
-          regions: regions,
+  try {
+    const country = findCountry(countryParam);
+    const territory = findTerritory(countryParam, territoryParam);
+    if (country && territory) {
+      axios
+        .get(territory.source.apiUrl)
+        .then((response) => {
+          const historicalRecords = territory.processor(
+            response.data,
+            territory
+          );
+          const regions = historicalRecords.subLocations;
+          res.status(200);
+          res.send({
+            regions: regions,
+          });
+        })
+        .catch(() => {
+          res.status(500);
+          res.send();
         });
-      })
-      .catch(() => {
-        res.status(500);
-        res.send();
-      });
-  } else {
-    const statusMessage = country
-      ? `Territory "${territoryParam}" not found.`
-      : `Country "${countryParam}" not found.`;
-    res.status(404);
-    res.statusMessage = statusMessage;
+    } else {
+      const statusMessage = country
+        ? `Territory "${territoryParam}" not found.`
+        : `Country "${countryParam}" not found.`;
+      res.status(404);
+      res.statusMessage = statusMessage;
+      res.send();
+    }
+  } catch {
+    res.status(500);
     res.send();
   }
 });
@@ -48,47 +55,51 @@ regionRouter.get("/:region", (req: Request, res: Response) => {
   const countryParam = req.params.country;
   const territoryParam = req.params.territory;
   const regionParam = req.params.region;
-
-  const country = findCountry(countryParam);
-  const territory = findTerritory(countryParam, territoryParam);
-  if (country && territory) {
-    axios
-      .get(territory.source.apiUrl)
-      .then((response) => {
-        const regionFromApi: Record = response.data.historical_county.values[0].values.find(
-          (region: Record) => {
-            return region.County.toLowerCase() === regionParam;
-          }
-        );
-        if (regionFromApi) {
-          const regionLocation: LocationClass = {
-            name: regionFromApi.County,
-            key: buildKeyFromName(regionFromApi.County),
-            source: territory.source,
-          };
-
-          const locationHistoricalRecordsClass = processRegionCovidData(
-            response.data,
-            regionLocation
+  try {
+    const country = findCountry(countryParam);
+    const territory = findTerritory(countryParam, territoryParam);
+    if (country && territory) {
+      axios
+        .get(territory.source.apiUrl)
+        .then((response) => {
+          const regionFromApi: Record = response.data.historical_county.values[0].values.find(
+            (region: Record) => {
+              return region.County.toLowerCase() === regionParam;
+            }
           );
-          res.status(200);
-          res.send(locationHistoricalRecordsClass);
-        } else {
-          res.status(404);
-          res.statusMessage = `Region "${regionParam}" not found.`;
+          if (regionFromApi) {
+            const regionLocation: LocationClass = {
+              name: regionFromApi.County,
+              key: buildKeyFromName(regionFromApi.County),
+              source: territory.source,
+            };
+
+            const locationHistoricalRecordsClass = processRegionCovidData(
+              response.data,
+              regionLocation
+            );
+            res.status(200);
+            res.send(locationHistoricalRecordsClass);
+          } else {
+            res.status(404);
+            res.statusMessage = `Region "${regionParam}" not found.`;
+            res.send();
+          }
+        })
+        .catch(() => {
+          res.status(500);
           res.send();
-        }
-      })
-      .catch(() => {
-        res.status(500);
-        res.send();
-      });
-  } else {
-    const statusMessage = country
-      ? `Territory "${territoryParam}" not found.`
-      : `Country "${countryParam}" not found.`;
-    res.status(404);
-    res.statusMessage = statusMessage;
+        });
+    } else {
+      const statusMessage = country
+        ? `Territory "${territoryParam}" not found.`
+        : `Country "${countryParam}" not found.`;
+      res.status(404);
+      res.statusMessage = statusMessage;
+      res.send();
+    }
+  } catch {
+    res.status(500);
     res.send();
   }
 });

@@ -14,17 +14,22 @@ const regionPath = "/region";
 // GET /covid/historicalRecords/country/:country/territory
 territoryRouter.get("/", (req: Request, res: Response) => {
   const countryParam = req.params.country;
-  const country = findCountry(countryParam);
-  if (country) {
-    const territoryList = getTerritoriesInCountry(countryParam);
-    res.status(200);
-    res.send({
-      territories: territoryList,
-      region: regionPath,
-    });
-  } else {
-    res.status(404);
-    res.statusMessage = `Country ${countryParam} not found.`;
+  try {
+    const country = findCountry(countryParam);
+    if (country) {
+      const territoryList = getTerritoriesInCountry(countryParam);
+      res.status(200);
+      res.send({
+        territories: territoryList,
+        region: regionPath,
+      });
+    } else {
+      res.status(404);
+      res.statusMessage = `Country ${countryParam} not found.`;
+      res.send();
+    }
+  } catch {
+    res.status(500);
     res.send();
   }
 });
@@ -33,29 +38,28 @@ territoryRouter.get("/", (req: Request, res: Response) => {
 territoryRouter.get("/:territory", (req: Request, res: Response) => {
   const countryParam = req.params.country;
   const territoryParam = req.params.territory;
-  const country = findCountry(countryParam);
-  const territory = findTerritory(countryParam, territoryParam);
-  if (country && territory) {
-    axios
-      .get(territory.source.apiUrl)
-      .then((response) => {
+  try {
+    const country = findCountry(countryParam);
+    const territory = findTerritory(countryParam, territoryParam);
+    if (country && territory) {
+      axios.get(territory.source.apiUrl).then((response) => {
         const locationHistoricalRecords = territory.processor(
           response.data,
           territory
         );
         res.status(200);
         res.send(locationHistoricalRecords);
-      })
-      .catch(() => {
-        res.status(500);
-        res.send();
       });
-  } else {
-    const statusMessage = country
-      ? `Territory "${territoryParam}" not found.`
-      : `Country "${countryParam}" not found.`;
-    res.status(404);
-    res.statusMessage = statusMessage;
+    } else {
+      const statusMessage = country
+        ? `Territory "${territoryParam}" not found.`
+        : `Country "${countryParam}" not found.`;
+      res.status(404);
+      res.statusMessage = statusMessage;
+      res.send();
+    }
+  } catch {
+    res.status(500);
     res.send();
   }
 });
