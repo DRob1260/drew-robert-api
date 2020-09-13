@@ -15,14 +15,7 @@ export interface LastUpdateDate {
 }
 
 export interface CharacteristicsByCounty {
-  values: Array<{
-    County: string;
-    confirmed_cases: number;
-    total_tested: number;
-    deaths: number;
-    lat: number;
-    lon: number;
-  }>;
+  values: Array<Record>;
 }
 
 export interface StateTestingResults {
@@ -40,13 +33,7 @@ export interface Demographics {
     count: number;
     tested: number;
     deaths: number;
-    demographics: Array<{
-      description: string;
-      count: number;
-      tested: number;
-      deaths: number;
-      color: string;
-    }>;
+    demographics: Array<Record>;
   }>;
 }
 
@@ -69,13 +56,15 @@ export interface ProbableCaseCounts {
 export interface HistoricalCounty {
   values: Array<{
     testDate: string;
-    values: Array<{
-      County: string;
-      confirmed_cases: number;
-      total_tested: number;
-      deaths: number;
-      lat: number;
-      lon: number;
-    }>;
+    values: Array<Record>;
   }>;
+}
+
+export interface Record {
+  County: string;
+  confirmed_cases: number;
+  total_tested: number;
+  deaths: number;
+  lat: number;
+  lon: number;
 }

@@ -3,15 +3,17 @@ import { countryRouter } from "./country/countryRouter";
 
 const historicalRecordsRouter = express.Router();
 
-// GET /covid/historicalRecords/
+const countryPath = "/country";
+
+// GET /covid/historicalRecords
 // TODO: return global historicalRecords
 historicalRecordsRouter.get("/", (req: Request, res: Response) => {
   res.status(200);
   res.send({
-    country: `${req.url}/country`,
+    country: countryPath,
   });
 });
 
-historicalRecordsRouter.use("/country", countryRouter);
+historicalRecordsRouter.use(countryPath, countryRouter);
 
 export { historicalRecordsRouter };

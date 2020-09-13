@@ -1,4 +1,5 @@
 import { LocationClass } from "../DrewRobertApi/response/LocationClass";
+import { LocationHistoricalRecordsClass } from "../DrewRobertApi/response/LocationHistoricalRecordsClass";
 
 export class LocationResolverClass extends LocationClass {
   key: string;
@@ -13,11 +14,14 @@ export class LocationResolverClass extends LocationClass {
 
   constructor() {
     super();
-    this.processor = () => {
-      return [];
+    this.processor = (apiData: object, location: LocationClass) => {
+      return new LocationHistoricalRecordsClass();
     };
     this.subLocations = [];
   }
 }
 
-type ProcessorFunction = () => any;
+type ProcessorFunction = (
+  apiData: object,
+  location: LocationResolverClass
+) => LocationHistoricalRecordsClass;
