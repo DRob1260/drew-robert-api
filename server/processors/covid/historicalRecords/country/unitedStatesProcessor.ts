@@ -3,7 +3,7 @@ import { LocationHistoricalRecordsClass } from "../../../../models/DrewRobertApi
 import { LocationResolverClass } from "../../../../models/covid/LocationResolverClass";
 import { buildLocationClassFromLocationResolverClass } from "../../../../utilities/LocationClassUtilities";
 
-export const unitedStatesProcessor = (
+export const processUnitedStatesCovidData = (
   apiData: object[],
   location: LocationResolverClass
 ): LocationHistoricalRecordsClass => {
