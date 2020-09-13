@@ -70,7 +70,8 @@
     "transpile": "babel ./server --out-dir dist-server --extensions '.ts' --source-maps inline",
     "clean": "rimraf dist-server",
     "watch:dev": "nodemon",
-    "test": "jest --watchAll=true",
+    "test": "jest",
+    "test:local": "jest --watchAll=true",
     "lint": "eslint --fix 'server/**/*.ts'",
     "prettier": "prettier --config .prettierrc.json --write server/**/*.ts"
   },
