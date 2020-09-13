@@ -1,19 +1,19 @@
 import { LocationResolverClass } from "../models/covid/LocationResolverClass";
 import { processIllinoisCovidData } from "../processors/covid/historicalRecords/country/territory/illinoisProcessor";
-import { unitedStatesProcessor } from "../processors/covid/historicalRecords/country/unitedStatesProcessor";
+import { processUnitedStatesCovidData } from "../processors/covid/historicalRecords/country/unitedStatesProcessor";
 import { LocationClass } from "../models/DrewRobertApi/response/LocationClass";
 import { buildLocationClassFromLocationResolverClass } from "./LocationClassUtilities";
 
 export const locationResolverList: LocationResolverClass[] = [
   {
     key: "unitedstates",
-    name: "United State of America",
+    name: "United States of America",
     source: {
       name: "",
       apiUrl: "",
       infoUrl: "",
     },
-    processor: unitedStatesProcessor,
+    processor: processUnitedStatesCovidData,
     subLocations: [
       {
         key: "illinois",
