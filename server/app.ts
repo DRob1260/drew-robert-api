@@ -3,7 +3,6 @@ import cors from "cors";
 import cookieParser from "cookie-parser";
 import logger from "morgan";
 import { indexRouter } from "./routes";
-import { covidRouter } from "./routes/covid";
 import { Urls } from "./config";
 
 const app = express();
@@ -15,6 +14,5 @@ app.use(cookieParser());
 app.use(cors());
 
 app.use(`${Urls.rootPath}/`, indexRouter);
-app.use(`${Urls.rootPath}/covid`, covidRouter);
 
 export default app;
