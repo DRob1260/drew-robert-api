@@ -10,6 +10,4 @@ COPY . .
 
 EXPOSE 8080
 
-ENV GULDENTECH=true
-
 CMD ["npm", "run", "prod"]
