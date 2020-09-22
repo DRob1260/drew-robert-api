@@ -1,13 +1,14 @@
 import express from "express";
 import { covidRouter } from "./covid/covidRouter";
+import { websiteRouter } from "./websiteRouter/websiteRouter";
 
 const indexRouter = express.Router();
 
-indexRouter.get("/", function (req, res) {
-  res.send({
-    covid: "/covid",
-  });
-});
+console.log("indexRouter");
+
+indexRouter.use(express.static(path.resolve));
+
+indexRouter.use("/", websiteRouter);
 
 indexRouter.use("/covid", covidRouter);
 

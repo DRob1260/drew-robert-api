@@ -1,0 +1,13 @@
+version: "2.4"
+services:
+  drew-robert-api:
+    #    image: drob1260/drew-robert-api
+    build: .
+    ports:
+      - "32768:8080"
+    restart: on-failure
+  drew-robert-site:
+    image: drob1260/drew-robert-site
+    ports:
+      - "2626:80"
+    restart: on-failure
