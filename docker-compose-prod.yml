@@ -8,5 +8,5 @@ services:
   site:
     image: drob1260/drew-robert-site:latest
     ports:
-      - "2626:80"
+      - "2626:3000"
     restart: on-failure

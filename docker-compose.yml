@@ -10,11 +10,7 @@ services:
   site:
     build:
       context: ../drew-robert-site
-      dockerfile: prod.Dockerfile
+      dockerfile: dev.Dockerfile
     ports:
       - "2626:3000"
-
     restart: on-failure
-    volumes:
-      - ${PWD}:/app
-      - /app/node_modules
