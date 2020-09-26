@@ -5,12 +5,12 @@ services:
       context: .
       dockerfile: dev.Dockerfile
     ports:
-      - "32768:8080"
+      - "2626:8080"
     restart: on-failure
   site:
     build:
       context: ../drew-robert-site
       dockerfile: dev.Dockerfile
     ports:
-      - "2626:3000"
+      - "32768:3000"
     restart: on-failure
