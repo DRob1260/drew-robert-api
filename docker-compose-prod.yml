@@ -1,0 +1,12 @@
+version: "2.4"
+services:
+  router:
+    image: drob1260/drew-robert-api:latest
+    ports:
+      - "32768:8080"
+    restart: on-failure
+  site:
+    image: drob1260/drew-robert-site:latest
+    ports:
+      - "2626:3000"
+    restart: on-failure

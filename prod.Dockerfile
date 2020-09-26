@@ -10,4 +10,6 @@ COPY . .
 
 EXPOSE 8080
 
+ENV DOCKER=true
+
 CMD ["npm", "run", "prod"]
