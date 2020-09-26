@@ -18,7 +18,7 @@ test("GET /", async (done) => {
 
 test("GET /covid", async (done) => {
   request(app)
-    .get("/covid")
+    .get("/covid-api")
     .then((request) => {
       expect(request.status).toEqual(200);
     })

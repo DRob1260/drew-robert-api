@@ -1,13 +1,20 @@
 version: "2.4"
 services:
-  drew-robert-api:
-    #    image: drob1260/drew-robert-api
-    build: .
+  router:
+    build:
+      context: .
+      dockerfile: dev.Dockerfile
     ports:
       - "32768:8080"
     restart: on-failure
-  drew-robert-site:
-    image: drob1260/drew-robert-site
+  site:
+    build:
+      context: ../drew-robert-site
+      dockerfile: prod.Dockerfile
     ports:
-      - "2626:80"
+      - "2626:3000"
+
     restart: on-failure
+    volumes:
+      - ${PWD}:/app
+      - /app/node_modules
