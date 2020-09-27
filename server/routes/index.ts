@@ -9,7 +9,10 @@ indexRouter.use("/covid-api", covidRouter);
 
 indexRouter.all(
   "/*",
-  createProxyMiddleware({ target: Urls.drewRobertSite, changeOrigin: true })
+  createProxyMiddleware(Urls.drewRobertSite, {
+    protocolRewrite: "https",
+    changeOrigin: true,
+  })
 );
 
 export { indexRouter };
