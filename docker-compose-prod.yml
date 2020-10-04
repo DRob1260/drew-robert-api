@@ -12,3 +12,8 @@ services:
     ports:
       - "32768:3000"
     restart: on-failure
+  redcycle-api:
+    image: projectredcycle/redcycle-api:latest
+    ports:
+      - "2627:80"
+    restart: on-failure

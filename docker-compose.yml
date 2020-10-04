@@ -9,10 +9,18 @@ services:
     restart: on-failure
     links:
       - "site:site"
+      - "redcycle-api:redcycle-api"
   site:
     build:
       context: ../drew-robert-site
       dockerfile: dev.Dockerfile
     ports:
       - "32768:3000"
+    restart: on-failure
+  redcycle-api:
+    build:
+      context: ../redcycle/redcycle-api
+      dockerfile: prod.Dockerfile
+    ports:
+      - "2627:80"
     restart: on-failure

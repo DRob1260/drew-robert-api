@@ -7,6 +7,14 @@ const indexRouter = express.Router();
 
 indexRouter.use("/covid-api", covidRouter);
 
+indexRouter.use(
+  "/redcycle",
+  createProxyMiddleware(Urls.redcycleApi, {
+    protocolRewrite: "https",
+    changeOrigin: true,
+  })
+);
+
 indexRouter.all(
   "/*",
   createProxyMiddleware(Urls.drewRobertSite, {
