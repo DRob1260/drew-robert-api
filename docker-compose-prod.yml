@@ -7,6 +7,7 @@ services:
     restart: on-failure
     links:
       - "site:site"
+      - "redcycle-api:redcycle-api"
   site:
     image: drob1260/drew-robert-site:latest
     ports:
