@@ -8,6 +8,7 @@ services:
     links:
       - "site:site"
       - "redcycle-api:redcycle-api"
+      - "redcycle-ui:redcycle-ui"
   site:
     image: drob1260/drew-robert-site:latest
     ports:
