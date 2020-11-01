@@ -10,6 +10,9 @@ services:
     links:
       - "site:site"
       - "redcycle-api:redcycle-api"
+      - "redcycle-ui:redcycle-ui"
+    volumes:
+      - ./server:/usr/src/app/server
   site:
     build:
       context: ../drew-robert-site
@@ -17,10 +20,24 @@ services:
     ports:
       - "32768:3000"
     restart: on-failure
+    volumes:
+      - ../drew-robert-site/src:/usr/src/app/src
+      - ../drew-robert-site/public:/usr/src/app/public
   redcycle-api:
     build:
       context: ../redcycle/redcycle-api
-      dockerfile: prod.Dockerfile
+      dockerfile: dev.Dockerfile
     ports:
-      - "2627:80"
+      - "2602:8000"
     restart: on-failure
+    volumes:
+      - ../redcycle/redcycle-api:/code
+  redcycle-ui:
+    build:
+      context: ../redcycle/redcycle-ui
+      dockerfile: dev.Dockerfile
+    ports:
+      - "2601:3000"
+    volumes:
+      - ../redcycle/redcycle-ui/src:/usr/src/app/src
+      - ../redcycle/redcycle-ui/public:/usr/src/app/public
