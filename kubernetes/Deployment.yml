@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: drew-robert-api-deployment
+  labels:
+    app: nginx
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: drew-robert-api
+  template:
+    metadata:
+      labels:
+        app: drew-robert-api
+    spec:
+      containers:
+        - name: drew-robert-api
+          image: drob1260/drew-robert-api:latest
+          ports:
+            - containerPort: 8080
