@@ -1,0 +1,14 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: drew-robert-site-ingress
+  namespace: drew-robert-site
+spec:
+  rules:
+    - host: drewrobert.com
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: drew-robert-api-service
+              servicePort: drew-robert-site-port
