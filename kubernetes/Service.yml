@@ -6,7 +6,7 @@ metadata:
 spec:
   type: ClusterIP
   ports:
-    - name: drew-robert-api-port
+    - name: dr-api-port
       port: 2601
       protocol: TCP
       targetPort: 8080
