@@ -1,25 +1,7 @@
 version: "2.4"
 services:
-  router:
+  drew-robert-api:
     image: drob1260/drew-robert-api:latest
     ports:
-      - "2626:8080"
+      - "2601:8080"
     restart: on-failure
-    links:
-      - "site:site"
-      - "redcycle-api:redcycle-api"
-      - "redcycle-ui:redcycle-ui"
-  site:
-    image: drob1260/drew-robert-site:latest
-    ports:
-      - "32768:3000"
-    restart: on-failure
-  redcycle-api:
-    image: projectredcycle/redcycle-api:latest
-    ports:
-      - "2602:8000"
-    restart: on-failure
-  redcycle-ui:
-    image: projectredcycle/redcycle-ui:latest
-    ports:
-      - "2601:3000"
