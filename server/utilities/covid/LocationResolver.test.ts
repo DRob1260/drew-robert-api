@@ -9,7 +9,7 @@ import {
   expectedCountry,
   expectedTerritories,
   expectedTerritory,
-} from "../../test/data/covid/utilities";
+} from "../../../test/data/covid/utilities";
 
 test("getCountries", () => {
   expect(getCountries()).toEqual(expectedCountries);

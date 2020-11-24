@@ -1,12 +1,16 @@
 import {
   buildKeyFromName,
   buildLocationClassFromLocationResolverClass,
-} from "../../../../../utilities/LocationClassUtilities";
-import { IllinoisCovidData } from "../../../../../models/covid/IllinoisDepartmentOfHealth/IllinoisCovidData";
-import { HistoricalRecord } from "../../../../../models/DrewRobertApi/response/LocationHistoricalRecordsClass";
-import { LocationHistoricalRecordsClass } from "../../../../../models/DrewRobertApi/response/LocationHistoricalRecordsClass";
-import { LocationClass } from "../../../../../models/DrewRobertApi/response/LocationClass";
+} from "../../../../../utilities/covid/LocationClassUtilities";
+import {
+  IllinoisCovidData,
+  Record,
+} from "../../../../../models/covid/IllinoisDepartmentOfHealth/IllinoisCovidData";
+import { HistoricalRecord } from "../../../../../models/DrewRobertApi/covid/response/LocationHistoricalRecordsClass";
+import { LocationHistoricalRecordsClass } from "../../../../../models/DrewRobertApi/covid/response/LocationHistoricalRecordsClass";
+import { LocationClass } from "../../../../../models/DrewRobertApi/covid/response/LocationClass";
 import { LocationResolverClass } from "../../../../../models/covid/LocationResolverClass";
+import { calculatePositivityRate } from "../../../../../utilities/covid/RateCalculator";
 
 export const processIllinoisCovidData = (
   apiData: IllinoisCovidData,
@@ -32,7 +36,15 @@ export const processIllinoisCovidData = (
       return subLoc.key !== illinoisLocation.key;
     });
 
+  let previousRecord: Record;
   apiData.state_testing_results.values.forEach((record) => {
+    const positivity = previousRecord
+      ? calculatePositivityRate(
+          { positive: record.confirmed_cases, tested: record.total_tested },
+          { positive: record.confirmed_cases, tested: record.total_tested }
+        )
+      : 0.0;
+
     historicalRecords.push({
       testDate: record.testDate,
       totals: {
@@ -40,7 +52,11 @@ export const processIllinoisCovidData = (
         tested: record.total_tested,
         deaths: record.deaths,
       },
+      rates: {
+        positivity: positivity,
+      },
     });
+    previousRecord = record;
   });
 
   return {

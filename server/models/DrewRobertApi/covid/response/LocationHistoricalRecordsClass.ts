@@ -19,4 +19,7 @@ export interface HistoricalRecord {
     tested: number;
     deaths: number;
   };
+  rates: {
+    positivity: number;
+  };
 }

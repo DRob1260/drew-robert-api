@@ -1,7 +1,7 @@
-import { LocationResolverClass } from "../models/covid/LocationResolverClass";
-import { processIllinoisCovidData } from "../processors/covid/historicalRecords/country/territory/illinoisProcessor";
-import { processUnitedStatesCovidData } from "../processors/covid/historicalRecords/country/unitedStatesProcessor";
-import { LocationClass } from "../models/DrewRobertApi/response/LocationClass";
+import { LocationResolverClass } from "../../models/covid/LocationResolverClass";
+import { processIllinoisCovidData } from "../../processors/covid/historicalRecords/country/territory/illinoisProcessor";
+import { processUnitedStatesCovidData } from "../../processors/covid/historicalRecords/country/unitedStatesProcessor";
+import { LocationClass } from "../../models/DrewRobertApi/covid/response/LocationClass";
 import { buildLocationClassFromLocationResolverClass } from "./LocationClassUtilities";
 
 export const locationResolverList: LocationResolverClass[] = [

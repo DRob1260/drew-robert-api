@@ -1,7 +1,7 @@
-import { LocationClass } from "../../../../models/DrewRobertApi/response/LocationClass";
-import { LocationHistoricalRecordsClass } from "../../../../models/DrewRobertApi/response/LocationHistoricalRecordsClass";
+import { LocationClass } from "../../../../models/DrewRobertApi/covid/response/LocationClass";
+import { LocationHistoricalRecordsClass } from "../../../../models/DrewRobertApi/covid/response/LocationHistoricalRecordsClass";
 import { LocationResolverClass } from "../../../../models/covid/LocationResolverClass";
-import { buildLocationClassFromLocationResolverClass } from "../../../../utilities/LocationClassUtilities";
+import { buildLocationClassFromLocationResolverClass } from "../../../../utilities/covid/LocationClassUtilities";
 
 export const processUnitedStatesCovidData = (
   apiData: object[],

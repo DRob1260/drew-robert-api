@@ -1,5 +1,5 @@
-import { LocationClass } from "../DrewRobertApi/response/LocationClass";
-import { LocationHistoricalRecordsClass } from "../DrewRobertApi/response/LocationHistoricalRecordsClass";
+import { LocationClass } from "../DrewRobertApi/covid/response/LocationClass";
+import { LocationHistoricalRecordsClass } from "../DrewRobertApi/covid/response/LocationHistoricalRecordsClass";
 
 export class LocationResolverClass extends LocationClass {
   key: string;

@@ -1,6 +1,6 @@
-import { LocationHistoricalRecordsClass } from "../../../server/models/DrewRobertApi/response/LocationHistoricalRecordsClass";
+import { LocationHistoricalRecordsClass } from "../../../server/models/DrewRobertApi/covid/response/LocationHistoricalRecordsClass";
 import { LocationResolverClass } from "../../../server/models/covid/LocationResolverClass";
-import { LocationClass } from "../../../server/models/DrewRobertApi/response/LocationClass";
+import { LocationClass } from "../../../server/models/DrewRobertApi/covid/response/LocationClass";
 import { processUnitedStatesCovidData } from "../../../server/processors/covid/historicalRecords/country/unitedStatesProcessor";
 import { processIllinoisCovidData } from "../../../server/processors/covid/historicalRecords/country/territory/illinoisProcessor";
 

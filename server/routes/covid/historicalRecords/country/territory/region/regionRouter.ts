@@ -2,11 +2,11 @@ import express, { Request, Response } from "express";
 import {
   findCountry,
   findTerritory,
-} from "../../../../../../utilities/LocationResolver";
+} from "../../../../../../utilities/covid/LocationResolver";
 import axios from "axios";
 import { processRegionCovidData } from "../../../../../../processors/covid/historicalRecords/country/territory/region/illinoisRegionProcessor";
-import { LocationClass } from "../../../../../../models/DrewRobertApi/response/LocationClass";
-import { buildKeyFromName } from "../../../../../../utilities/LocationClassUtilities";
+import { LocationClass } from "../../../../../../models/DrewRobertApi/covid/response/LocationClass";
+import { buildKeyFromName } from "../../../../../../utilities/covid/LocationClassUtilities";
 import { Record } from "../../../../../../models/covid/IllinoisDepartmentOfHealth/IllinoisCovidData";
 
 const regionRouter = express.Router({ mergeParams: true });

@@ -1,5 +1,5 @@
-import { LocationClass } from "../../../../../../server/models/DrewRobertApi/response/LocationClass";
-import { LocationHistoricalRecordsClass } from "../../../../../../server/models/DrewRobertApi/response/LocationHistoricalRecordsClass";
+import { LocationClass } from "../../../../../../server/models/DrewRobertApi/covid/response/LocationClass";
+import { LocationHistoricalRecordsClass } from "../../../../../../server/models/DrewRobertApi/covid/response/LocationHistoricalRecordsClass";
 
 export const adamsRegionLocation: LocationClass = {
   name: "Adams",

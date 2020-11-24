@@ -1,4 +1,4 @@
-import { LocationResolverClass } from "../models/covid/LocationResolverClass";
+import { LocationResolverClass } from "../../models/covid/LocationResolverClass";
 
 export const buildKeyFromName = (name: string) => {
   const nameWithoutSpaces = name.replace(/\s/g, "");

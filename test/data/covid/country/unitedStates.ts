@@ -1,7 +1,7 @@
 import { LocationResolverClass } from "../../../../server/models/covid/LocationResolverClass";
 import { illinoisLocationResolver } from "./territory/illinois";
 import { processUnitedStatesCovidData } from "../../../../server/processors/covid/historicalRecords/country/unitedStatesProcessor";
-import { LocationHistoricalRecordsClass } from "../../../../server/models/DrewRobertApi/response/LocationHistoricalRecordsClass";
+import { LocationHistoricalRecordsClass } from "../../../../server/models/DrewRobertApi/covid/response/LocationHistoricalRecordsClass";
 
 export const unitedStatesLocation: LocationResolverClass = {
   name: "United States of America",

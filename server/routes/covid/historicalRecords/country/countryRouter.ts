@@ -3,7 +3,7 @@ import { territoryRouter } from "./territory/territoryRouter";
 import {
   findCountry,
   getCountries,
-} from "../../../../utilities/LocationResolver";
+} from "../../../../utilities/covid/LocationResolver";
 
 const countryRouter = express.Router();
 

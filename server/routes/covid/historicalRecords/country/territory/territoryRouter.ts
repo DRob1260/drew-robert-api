@@ -4,7 +4,7 @@ import {
   findCountry,
   findTerritory,
   getTerritoriesInCountry,
-} from "../../../../../utilities/LocationResolver";
+} from "../../../../../utilities/covid/LocationResolver";
 import { regionRouter } from "./region/regionRouter";
 
 const territoryRouter = express.Router({ mergeParams: true });

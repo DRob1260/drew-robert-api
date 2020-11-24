@@ -5,7 +5,7 @@ import {
 import {
   expectedLocationClass,
   locationResolverClass,
-} from "../../test/data/covid/utilities";
+} from "../../../test/data/covid/utilities";
 
 test("buildKeyFromName", () => {
   expect(buildKeyFromName("My Name")).toEqual("myname");
