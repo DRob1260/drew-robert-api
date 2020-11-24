@@ -4,9 +4,9 @@ import { indexRouter } from "./index";
 
 app.use("/", indexRouter);
 
-test("GET /covid-api", async (done) => {
+test("GET /covid", async (done) => {
   request(app)
-    .get("/covid-api")
+    .get("/covid")
     .then((request) => {
       expect(request.status).toEqual(200);
     })

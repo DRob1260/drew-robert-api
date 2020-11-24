@@ -19,7 +19,7 @@ const server = setupServer(
 it("uses indexRouter", async (done) => {
   server.listen();
   request(app)
-    .get("/")
+    .get("/api")
     .then((request) => {
       expect(request.status).toEqual(200);
     })
