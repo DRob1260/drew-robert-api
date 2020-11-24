@@ -1,0 +1,13 @@
+kind: Ingress
+metadata:
+  name: drew-robert-site-ingress
+  namespace: drew-robert-site
+spec:
+  rules:
+    - host: drewrobert.com
+      http:
+        paths:
+          - path: /api
+            backend:
+              serviceName: drew-robert-api-service
+              servicePort: dr-api-port
