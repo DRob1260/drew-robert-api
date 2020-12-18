@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: drew-robert-api-deployment
   labels:
-    app: nginx
+    app: drew-robert-api
 spec:
   replicas: 1
   selector:
