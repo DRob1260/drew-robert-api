@@ -1,14 +1,21 @@
 import express, { Request, Response } from "express";
 import { covidRouter } from "./covid/covidRouter";
+import { galleryRouter } from "./gallery/galleryRouter";
 
 const indexRouter = express.Router();
 
-indexRouter.use("/covid", covidRouter);
+const covidPath = "/covid";
+const galleryPath = "/gallery";
+
+indexRouter.use(covidPath, covidRouter);
+
+indexRouter.use(galleryPath, galleryRouter);
 
 indexRouter.get("/", (req: Request, res: Response) => {
   res.status(200);
   res.send({
-    covid: "/covid",
+    covid: covidPath,
+    gallery: galleryPath,
   });
 });
 

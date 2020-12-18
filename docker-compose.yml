@@ -9,3 +9,6 @@ services:
     restart: on-failure
     volumes:
       - ./server:/usr/src/app/server
+    environment:
+      - FLICKR_API_KEY
+      - FLICKR_API_SECRET

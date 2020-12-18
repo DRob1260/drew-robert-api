@@ -19,3 +19,14 @@ spec:
           image: drob1260/drew-robert-api:latest
           ports:
             - containerPort: 8080
+          env:
+            - name: FLICKR_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: drew-robert-api-secret
+                  key: FLICKR_API_KEY
+            - name: FLICKR_API_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: drew-robert-api-secret
+                  key: FLICKR_API_SECRET

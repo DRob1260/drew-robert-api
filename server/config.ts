@@ -1,7 +1,10 @@
-const docker = process.env.DOCKER;
-
 export const Urls = {
-  drewRobertSite: docker ? "http://site:3000" : "http://localhost:3000",
-  redcycleUi: docker ? "http://redcycle-ui:3000" : "http://whatever",
-  redcycleApi: docker ? "http://redcycle-api:8000" : "http://whatever",
+  flickrApi: "https://www.flickr.com/services/rest",
+};
+
+export const Secrets = {
+  flickr: {
+    apiKey: process.env.FLICKR_API_KEY,
+    apiSecret: process.env.FLICKR_API_SECRET,
+  },
 };

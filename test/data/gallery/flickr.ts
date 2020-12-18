@@ -1,0 +1,51 @@
+import { FlickrPhotoDataResponse } from "../../../server/models/gallery/flickr/FlickrPhotoDataResponse";
+
+export const flickrPhotoDataResponse: FlickrPhotoDataResponse = {
+  photos: {
+    page: 1,
+    pages: 1,
+    perpage: 100,
+    total: "65",
+    photo: [
+      {
+        id: "50685248566",
+        owner: "69728079@N03",
+        secret: "1e64249590",
+        server: "65535",
+        farm: 66,
+        title: "FC3082E0-FFBA-4DAE-97E2-1ABAA43EC5AC",
+        ispublic: 1,
+        isfriend: 0,
+        isfamily: 0,
+        originalsecret: "a2ac4c1550",
+        originalformat: "jpg",
+      },
+      {
+        id: "50684491398",
+        owner: "69728079@N03",
+        secret: "ca28fe05c5",
+        server: "65535",
+        farm: 66,
+        title: "FBB77237-B911-456F-9FF1-58E11215A198",
+        ispublic: 1,
+        isfriend: 0,
+        isfamily: 0,
+        originalsecret: "b1ab047a37",
+        originalformat: "jpg",
+      },
+      {
+        id: "50685329567",
+        owner: "69728079@N03",
+        secret: "69f32fe21c",
+        server: "65535",
+        farm: 66,
+        title: "F346CD03-F9F7-4F7E-ACD6-8EFC4EEBD412",
+        ispublic: 1,
+        isfriend: 0,
+        isfamily: 0,
+        originalsecret: "f9dc40eeb4",
+        originalformat: "jpg",
+      },
+    ],
+  },
+};

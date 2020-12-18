@@ -5,3 +5,6 @@ services:
     ports:
       - "2601:8080"
     restart: on-failure
+    environment:
+      - FLICKR_API_KEY
+      - FLICKR_API_SECRET
