@@ -1,6 +1,5 @@
 import express, { Request, Response } from "express";
 import { flickrRouter } from "./flickr/flickrRouter";
-import "regenerator-runtime/runtime.js";
 
 export const galleryRouter = express.Router();
 
