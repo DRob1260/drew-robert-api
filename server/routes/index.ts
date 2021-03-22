@@ -2,6 +2,7 @@ import express, { Request, Response } from "express";
 import { covidRouter } from "./covid/covidRouter";
 import { galleryRouter } from "./gallery/galleryRouter";
 import { machERouter } from "./machE/machERouter";
+import "regenerator-runtime/runtime.js";
 
 const indexRouter = express.Router();
 
