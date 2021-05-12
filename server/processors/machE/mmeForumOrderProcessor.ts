@@ -137,7 +137,7 @@ const mapRowEntriesToOrder = (rowEntries: EntryEntity[]): MmeForumOrder => {
   return mmeForumOrder;
 };
 
-const buildDate = (dateString: string): Date => {
+const buildDate = (dateString: string): string => {
   const dateTime = DateTime.fromFormat(dateString, "M/d/yyyy");
-  return dateTime.toJSDate();
+  return dateTime.toISO();
 };

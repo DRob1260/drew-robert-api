@@ -2,11 +2,11 @@ export type MmeForumOrder = {
   orderEntryNumber: number;
   mmeForumUsername: string;
   orderNumber: string;
-  orderDate: Date;
-  estimatedBuildDate: Date;
-  actualBuildDate: Date;
-  estimatedDeliveryDate: Date;
-  actualDeliveryDate: Date;
+  orderDate: string;
+  estimatedBuildDate: string;
+  actualBuildDate: string;
+  estimatedDeliveryDate: string;
+  actualDeliveryDate: string;
   vin: string;
   vinReceived: boolean;
   daysBetweenOrderAndBuild: number;
