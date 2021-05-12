@@ -1,6 +1,5 @@
 import { MmeForumOrder } from "../../models/machE/MmeForumOrder";
 import axios, { AxiosResponse } from "axios";
-import { DateTime } from "luxon";
 import {
   EntryEntity,
   Sheet,
@@ -70,21 +69,19 @@ const mapRowEntriesToOrder = (rowEntries: EntryEntity[]): MmeForumOrder => {
         mmeForumOrder.orderNumber = entry.gs$cell.inputValue;
         break;
       case "5":
-        mmeForumOrder.orderDate = buildDate(entry.gs$cell.inputValue);
+        mmeForumOrder.orderDate = entry.gs$cell.inputValue;
         break;
       case "7":
-        mmeForumOrder.estimatedBuildDate = buildDate(entry.gs$cell.inputValue);
+        mmeForumOrder.estimatedBuildDate = entry.gs$cell.inputValue;
         break;
       case "8":
-        mmeForumOrder.actualBuildDate = buildDate(entry.gs$cell.inputValue);
+        mmeForumOrder.actualBuildDate = entry.gs$cell.inputValue;
         break;
       case "9":
-        mmeForumOrder.estimatedDeliveryDate = buildDate(
-          entry.gs$cell.inputValue
-        );
+        mmeForumOrder.estimatedDeliveryDate = entry.gs$cell.inputValue;
         break;
       case "10":
-        mmeForumOrder.actualDeliveryDate = buildDate(entry.gs$cell.inputValue);
+        mmeForumOrder.actualDeliveryDate = entry.gs$cell.inputValue;
         break;
       case "11":
         mmeForumOrder.vin = entry.gs$cell.inputValue;
@@ -135,9 +132,4 @@ const mapRowEntriesToOrder = (rowEntries: EntryEntity[]): MmeForumOrder => {
   });
 
   return mmeForumOrder;
-};
-
-const buildDate = (dateString: string): string => {
-  const dateTime = DateTime.fromFormat(dateString, "M/d/yyyy");
-  return dateTime.toISO();
 };
