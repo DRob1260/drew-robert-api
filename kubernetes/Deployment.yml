@@ -19,6 +19,10 @@ spec:
           image: drob1260/drew-robert-api:latest
           ports:
             - containerPort: 8080
+          volumeMounts:
+            - name: secret-files
+              readOnly: true
+              mountPath: "/secret-files"
           env:
             - name: FLICKR_API_KEY
               valueFrom:
@@ -30,3 +34,11 @@ spec:
                 secretKeyRef:
                   name: drew-robert-api-secret
                   key: FLICKR_API_SECRET
+      volumes:
+        - name: secret-files
+          secret:
+            secretName: drew-robert-api-secret
+            items:
+              - key: GoogleApiCredentials.json
+                path: "GoogleApiCredentials.json"
+                mode: 0400
