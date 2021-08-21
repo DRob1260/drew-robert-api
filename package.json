@@ -66,7 +66,7 @@
   "scripts": {
     "start": "npm run prod",
     "build": "npm-run-all clean transpile",
-    "server": "GOOGLE_APPLICATION_CREDENTIALS=secret-files/GoogleApiCredentials.json node ./dist-server/bin/www",
+    "server": "GOOGLE_APPLICATION_CREDENTIALS=usr/src/app/secret-files/GoogleApiCredentials.json node ./dist-server/bin/www",
     "dev": "NODE_ENV=development npm-run-all build server",
     "prod": "NODE_ENV=production npm-run-all build server",
     "transpile": "babel ./server --out-dir dist-server --extensions '.ts' --source-maps inline",
