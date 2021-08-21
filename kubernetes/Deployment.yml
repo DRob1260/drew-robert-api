@@ -22,7 +22,7 @@ spec:
           volumeMounts:
             - name: secret-files
               readOnly: true
-              mountPath: "/secret-files"
+              mountPath: "/usr/src/app/secret-files"
           env:
             - name: FLICKR_API_KEY
               valueFrom:
