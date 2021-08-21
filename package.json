@@ -66,9 +66,9 @@
   "scripts": {
     "start": "npm run prod",
     "build": "npm-run-all clean transpile",
-    "server": "GOOGLE_APPLICATION_CREDENTIALS=usr/src/app/secret-files/GoogleApiCredentials.json node ./dist-server/bin/www",
-    "dev": "NODE_ENV=development npm-run-all build server",
-    "prod": "NODE_ENV=production npm-run-all build server",
+    "server": "node ./dist-server/bin/www",
+    "dev": "GOOGLE_APPLICATION_CREDENTIALS=GoogleApiCredentials.json NODE_ENV=development npm-run-all build server",
+    "prod": "GOOGLE_APPLICATION_CREDENTIALS=usr/src/app/secret-files/GoogleApiCredentials.json NODE_ENV=production npm-run-all build server",
     "transpile": "babel ./server --out-dir dist-server --extensions '.ts' --source-maps inline",
     "clean": "rimraf dist-server",
     "watch:dev": "nodemon",
