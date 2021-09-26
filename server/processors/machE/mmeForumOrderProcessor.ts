@@ -34,7 +34,9 @@ export const getMmeForumOrders = (): Promise<Array<MmeForumOrder>> => {
             estimatedDeliveryDate: row[7],
             actualDeliveryDate: row[8],
             vin: row[9],
-            vinReceived: row[10].toLocaleLowerCase() === "yes",
+            vinReceived: row[10]
+              ? row[10].toLocaleLowerCase() === "yes"
+              : false,
             daysBetweenOrderAndBuild: parseInt(row[11]),
             daysBetweenOrderAndDelivery: parseInt(row[12]),
             daysBetweenBuildAndDelivery: parseInt(row[13]),
